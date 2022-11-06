@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO2180 Project 1</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>AVENGERS CHARACTER SEARCH</h1>
+    </header>
+    <main>
+        <div class="container">
+        <h2>Search by Full Name or Alias</h2>
+        <form action="superheroes.php" method="post">
+            <div class="form-group">
+                <input type="superhero" name="superhero" id="superhero" placeholder="e.g. Captain America or Steve Rogers">
+            </div>
+            <button id="seacrh" type="submit" class="btn">Search</button>
+        </form>
+        <div id="result">
+            <h2>RESULT</h2>
+            <hr>
+            <div class="message"></div>
+        </div>
+    </div>
+    </main>
+</body>
