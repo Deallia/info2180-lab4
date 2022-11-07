@@ -1,6 +1,5 @@
 <?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
-
 $superheroes = [
   [
       "id" => 1,
@@ -64,10 +63,39 @@ $superheroes = [
   ], 
 ];
 
+$query = strip_tags($_REQUEST["query"]);
+$validation=false;
+if ($query !== ""){
+    foreach($superheroes as $superhero){
+        if($superhero['alias']== $query or $superhero['name'] == $query ){
+          $alias = $superhero['alias'];
+          $name = $superhero['name'];
+          $bio=$superhero['biography'];
+             echo ("<h3>" .$alias. "</h3>");
+             echo ("<h4> A.K.A " .$name. "</h4>");
+             echo ("<p>" .$bio. "</p>");
+          $validation=true;
+          break;
+        }
+    }
+    
+}
+if ($validation==false){
+    echo ("<h3> SUPERHERO NOT FOUND </h3>");
+}
+
 ?>
 
+
 <ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
+<?php foreach ($superheroes as $superhero): 
+    if ($query == ""): ?>
+ <li><?= $superhero['alias']; ?></li>
+<?php endif; 
+    endforeach; ?>
 </ul>
+
+
+<?php
+
+?>
