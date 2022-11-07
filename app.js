@@ -1,26 +1,26 @@
 window.onload = (event) => {
-
-
+   
+    
     const button = document.querySelector("button");
     
     const btnListener =() => button.addEventListener("click", handleClick);
     
-
+   
     
     function handleClick(event){
-        
-
+        var query =  document.querySelector("input").value;
+      
         event.preventDefault();
-        console.log('hello');
+        
     
       httpRequest = new XMLHttpRequest();
 
 
-        var url= "http://localhost/info2180-lab4/superheroes.php";
+        var url= "superheroes.php?query="+query;
+        httpRequest.open('GET', url, true);
         httpRequest.onreadystatechange = loadSuperheroes;
-        httpRequest.open('GET', url);
         httpRequest.send();
-
+        console.log(query);
         
     };
 
@@ -28,7 +28,11 @@ window.onload = (event) => {
         if (httpRequest.readyState == XMLHttpRequest.DONE) {
             if (httpRequest.status==200) {
                 var response = httpRequest.responseText;
-                alert(response);
+                var result = document.querySelector(".message");
+                result.innerHTML = response;
+            }
+            else {
+                alert("Something went wrong");
             }
         }
     }
