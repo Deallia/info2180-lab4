@@ -77,25 +77,18 @@ if ($query !== ""){
           $validation=true;
           break;
         }
+    }  
+}
+else{
+    echo ("<ul>");
+    foreach ($superheroes as $superhero){
+        echo ("<li>".$superhero['alias']. "</li>");
     }
-    
+    echo ("</ul>");
+    $validation=true;
 }
 if ($validation==false){
     echo ("<h3> SUPERHERO NOT FOUND </h3>");
 }
-
-?>
-
-
-<ul>
-<?php foreach ($superheroes as $superhero): 
-    if ($query == ""): ?>
- <li><?= $superhero['alias']; ?></li>
-<?php endif; 
-    endforeach; ?>
-</ul>
-
-
-<?php
 
 ?>
